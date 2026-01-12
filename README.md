@@ -19,3 +19,18 @@ It is used to learn the fundamentals and core concepts of React.
    npm run dev
 3. Open your browser and go to:
    http://localhost:5173
+# My Company Website
+
+A simple multi-page company website built with **React**, **Vite**, and **React Router** as part of the ALX Front-End curriculum.
+
+## 📌 Project Overview
+
+This project demonstrates:
+- Building a React application using Vite
+- Client-side routing with React Router
+- Inline CSS styling
+- State management using React Hooks (`useState`)
+- Component-based architecture
+
+## 📂 Project Structure
+
