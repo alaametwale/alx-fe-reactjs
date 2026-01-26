@@ -1,39 +1,16 @@
 import create from 'zustand';
 
-export const useRecipeStore = create(set => ({
+export const useRecipeStore = create((set) => ({
+  // الحالة الأساسية
   recipes: [],
-  favorites: [],
-  searchTerm: '',
-  filteredRecipes: [],
-  recommendations: [],
 
-  // إدارة الوصفات
-  setRecipes: (recipes) => set({ recipes }),  // ✅ هذا مطلوب
-  addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
-  updateRecipe: (updatedRecipe) => set(state => ({
+  // دوال الإدارة المطلوبة بالاسم نفسه
+  setRecipes: (recipes) => set({ recipes }), // ✅ هنا الدالة المطلوبة
+  addRecipe: (recipe) => set((state) => ({ recipes: [...state.recipes, recipe] })),
+  updateRecipe: (updatedRecipe) => set((state) => ({
     recipes: state.recipes.map(r => r.id === updatedRecipe.id ? updatedRecipe : r)
   })),
-  deleteRecipe: (id) => set(state => ({
+  deleteRecipe: (id) => set((state) => ({
     recipes: state.recipes.filter(r => r.id !== id)
   })),
-
-  // البحث والتصفية
-  setSearchTerm: (term) => set({ searchTerm: term }),
-  filterRecipes: () => set(state => ({
-    filteredRecipes: state.recipes.filter(recipe =>
-      recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
-    )
-  })),
-
-  // المفضلات والتوصيات
-  addFavorite: (recipeId) => set(state => ({ favorites: [...state.favorites, recipeId] })),
-  removeFavorite: (recipeId) => set(state => ({
-    favorites: state.favorites.filter(id => id !== recipeId)
-  })),
-  generateRecommendations: () => set(state => {
-    const recommended = state.recipes.filter(recipe =>
-      state.favorites.includes(recipe.id) && Math.random() > 0.5
-    );
-    return { recommendations: recommended };
-  })
 }));
