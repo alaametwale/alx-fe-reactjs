@@ -1,6 +1,14 @@
 import React from 'react';
 import { useRecipeStore } from './recipeStore';
 import { Link } from 'react-router-dom'; // ✅ هذا مطلوب
+import create from 'zustand';
+
+export const useRecipeStore = create((set) => ({
+  recipes: [],
+  addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
+  setRecipes: (recipes) => set({ recipes }),
+}));
+
 
 const RecipeList = () => {
   const recipes = useRecipeStore(state => state.recipes);
