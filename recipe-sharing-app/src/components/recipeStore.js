@@ -1,32 +1,27 @@
-import React from 'react';
-import { useRecipeStore } from './recipeStore';
-import { Link } from 'react-router-dom'; // ✅ هذا مطلوب
 import create from 'zustand';
 
 export const useRecipeStore = create((set) => ({
+  // قائمة الوصفات
   recipes: [],
-  addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
+
+  // إضافة وصفة جديدة
+  addRecipe: (newRecipe) =>
+    set((state) => ({ recipes: [...state.recipes, newRecipe] })),
+
+  // تعيين قائمة الوصفات بالكامل
   setRecipes: (recipes) => set({ recipes }),
+
+  // تحديث وصفة موجودة
+  updateRecipe: (updatedRecipe) =>
+    set((state) => ({
+      recipes: state.recipes.map((recipe) =>
+        recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+      ),
+    })),
+
+  // حذف وصفة حسب الـ id
+  deleteRecipe: (id) =>
+    set((state) => ({
+      recipes: state.recipes.filter((recipe) => recipe.id !== id),
+    })),
 }));
-
-
-const RecipeList = () => {
-  const recipes = useRecipeStore(state => state.recipes);
-
-  return (
-    <div>
-      <h2>Recipe List</h2>
-      {recipes.map(recipe => (
-        <div className="recipe-item" key={recipe.id}>
-          {/* ✅ استخدام Link لتوجيه المستخدم لتفاصيل الوصفة */}
-          <Link to={`/recipe/${recipe.id}`}>
-            <h3>{recipe.title}</h3>
-          </Link>
-          <p>{recipe.description}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-export default RecipeList;
