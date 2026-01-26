@@ -1,0 +1,7 @@
+# GitHub API Key (إن كان مطلوبًا)
+VITE_APP_GITHUB_API_KEY=your_github_api_key_here
+
+# أي متغيرات أخرى يمكن إضافتها هنا
+# مثال: اسم المشروع أو عنوان السيرفر (اختياري)
+VITE_APP_PROJECT_NAME=github-user-search
+
