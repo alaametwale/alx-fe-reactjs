@@ -24,4 +24,10 @@ export const useRecipeStore = create((set) => ({
     set((state) => ({
       recipes: state.recipes.filter((recipe) => recipe.id !== id),
     })),
+
+  // 🔹 خصائص البحث
+  searchTerm: '',
+
+  // 🔹 تحديث مصطلح البحث
+  setSearchTerm: (term) => set({ searchTerm: term }),
 }));
