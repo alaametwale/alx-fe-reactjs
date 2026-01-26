@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { useRecipeStore } from './recipeStore';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.filteredRecipes.length ? state.filteredRecipes : state.recipes);
+  const recipes = useRecipeStore((state) =>
+    state.filteredRecipes.length ? state.filteredRecipes : state.recipes
+  );
   const filterRecipes = useRecipeStore((state) => state.filterRecipes);
   const searchTerm = useRecipeStore((state) => state.searchTerm);
 
