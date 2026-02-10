@@ -3,18 +3,17 @@ import { useState } from "react";
 export default function AddRecipeForm() {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [instructions, setInstructions] = useState("");
-  const [errors, setErrors] = useState({}); // لازم يكون errors
+  const [steps, setSteps] = useState(""); // لازم يكون steps
+  const [errors, setErrors] = useState({});
 
   // function validate
   const validate = () => {
     const newErrors = {};
     if (!title) newErrors.title = "Title is required";
     if (!ingredients) newErrors.ingredients = "Ingredients are required";
-    if (!instructions) newErrors.instructions = "Instructions are required";
+    if (!steps) newErrors.steps = "Steps are required"; // validation لـ steps
 
-    setErrors(newErrors); // setErrors لازم تتعمل هنا
-
+    setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
@@ -25,7 +24,7 @@ export default function AddRecipeForm() {
     alert("Recipe submitted successfully!");
     setTitle("");
     setIngredients("");
-    setInstructions("");
+    setSteps("");
   };
 
   return (
@@ -56,13 +55,11 @@ export default function AddRecipeForm() {
         <div>
           <textarea
             className="w-full p-2 border rounded"
-            placeholder="Instructions"
-            value={instructions}
-            onChange={(e) => setInstructions(e.target.value)}
+            placeholder="Steps"
+            value={steps}
+            onChange={(e) => setSteps(e.target.value)}
           />
-          {errors.instructions && (
-            <p className="text-red-500">{errors.instructions}</p>
-          )}
+          {errors.steps && <p className="text-red-500">{errors.steps}</p>}
         </div>
 
         <button
