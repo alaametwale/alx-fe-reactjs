@@ -5,7 +5,7 @@
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
     "image": "https://via.placeholder.com/300",
     "ingredients": ["Pasta", "Eggs", "Cheese", "Bacon", "Black Pepper"],
-    "steps": [
+    "instructions": [
       "Boil the pasta in salted water.",
       "Cook the bacon until crispy.",
       "Mix eggs and cheese in a bowl.",
@@ -19,7 +19,7 @@
     "summary": "Chunks of grilled chicken cooked in a creamy tomato-based sauce.",
     "image": "https://via.placeholder.com/300",
     "ingredients": ["Chicken", "Tomato Puree", "Cream", "Spices"],
-    "steps": [
+    "instructions": [
       "Grill the marinated chicken pieces.",
       "Prepare the tomato-based sauce.",
       "Add cream and spices.",
