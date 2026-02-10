@@ -15,23 +15,30 @@ export default function RecipeDetail() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
-      <img src={recipe.image} className="w-full h-64 object-cover rounded-lg" />
+      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+        <img
+          src={recipe.image}
+          className="w-full h-64 object-cover rounded-t-lg"
+        />
 
-      <h1 className="text-3xl font-bold mt-4">{recipe.title}</h1>
+        <div className="p-6">
+          <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
 
-      <h2 className="text-xl font-semibold mt-6">Ingredients</h2>
-      <ul className="list-disc pl-6">
-        {recipe.ingredients.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
+          <h2 className="text-xl font-semibold mt-4">Ingredients</h2>
+          <ul className="list-disc pl-6 mt-2">
+            {recipe.ingredients.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
 
-      <h2 className="text-xl font-semibold mt-6">Instructions</h2>
-      <ol className="list-decimal pl-6">
-        {recipe.instructions.map((step, i) => (
-          <li key={i}>{step}</li>
-        ))}
-      </ol>
+          <h2 className="text-xl font-semibold mt-6">Instructions</h2>
+          <ol className="list-decimal pl-6 mt-2">
+            {recipe.instructions.map((step, i) => (
+              <li key={i}>{step}</li>
+            ))}
+          </ol>
+        </div>
+      </div>
     </div>
   );
 }
