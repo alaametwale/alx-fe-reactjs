@@ -4,15 +4,13 @@ import * as Yup from "yup";
 
 const validationSchema = Yup.object({
 
-  username: Yup.string()
-    .required("Username is required"),
+  username: Yup.string().required("Username is required"),
 
   email: Yup.string()
-    .email("Invalid email format")
+    .email("Invalid email")
     .required("Email is required"),
 
-  password: Yup.string()
-    .required("Password is required"),
+  password: Yup.string().required("Password is required"),
 
 });
 
@@ -26,9 +24,9 @@ function FormikForm() {
 
   const onSubmit = (values, { resetForm }) => {
 
-    console.log("Formik Data:", values);
+    console.log(values);
 
-    alert("Formik Registration Successful");
+    alert("Formik form submitted successfully");
 
     resetForm();
 
@@ -36,81 +34,72 @@ function FormikForm() {
 
   return (
 
-    <div>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+    >
 
-      <h2>Formik Registration Form</h2>
+      <Form>
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
+        <div>
 
-        <Form>
+          <label>Username:</label>
 
-          <div>
+          <Field
+            type="text"
+            name="username"
+          />
 
-            <label>Username:</label>
+          <ErrorMessage
+            name="username"
+            component="div"
+          />
 
-            <Field
-              type="text"
-              name="username"
-            />
+        </div>
 
-            <ErrorMessage
-              name="username"
-              component="div"
-              style={{ color: "red" }}
-            />
+        <div>
 
-          </div>
+          <label>Email:</label>
 
-          <div>
+          <Field
+            type="email"
+            name="email"
+          />
 
-            <label>Email:</label>
+          <ErrorMessage
+            name="email"
+            component="div"
+          />
 
-            <Field
-              type="email"
-              name="email"
-            />
+        </div>
 
-            <ErrorMessage
-              name="email"
-              component="div"
-              style={{ color: "red" }}
-            />
+        <div>
 
-          </div>
+          <label>Password:</label>
 
-          <div>
+          <Field
+            type="password"
+            name="password"
+          />
 
-            <label>Password:</label>
+          <ErrorMessage
+            name="password"
+            component="div"
+          />
 
-            <Field
-              type="password"
-              name="password"
-            />
+        </div>
 
-            <ErrorMessage
-              name="password"
-              component="div"
-              style={{ color: "red" }}
-            />
+        <button type="submit">
+          Submit
+        </button>
 
-          </div>
+      </Form>
 
-          <button type="submit">
-            Register
-          </button>
-
-        </Form>
-
-      </Formik>
-
-    </div>
+    </Formik>
 
   );
 
 }
 
-export default FormikForm;
+export default FormikF
