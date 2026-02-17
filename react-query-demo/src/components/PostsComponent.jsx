@@ -23,10 +23,19 @@ function PostsComponent() {
     isError,
     error,
     refetch
-  } = useQuery("posts", fetchPosts);
+  } = useQuery(
+    "posts",
+    fetchPosts,
+    {
+      cacheTime: 1000 * 60 * 10, // 10 minutes
+      staleTime: 1000 * 60 * 5,  // 5 minutes
+      refetchOnWindowFocus: false,
+      keepPreviousData: true
+    }
+  );
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p>Loading posts...</p>;
   }
 
   if (isError) {
@@ -37,7 +46,7 @@ function PostsComponent() {
 
     <div>
 
-      <h2>Posts</h2>
+      <h2>Posts List</h2>
 
       <button onClick={refetch}>
         Refetch Posts
@@ -50,6 +59,8 @@ function PostsComponent() {
           <h3>{post.title}</h3>
 
           <p>{post.body}</p>
+
+          <hr />
 
         </div>
 
